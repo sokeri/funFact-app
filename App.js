@@ -1,18 +1,60 @@
 import React from "react";
-import { Text } from "react-native";
+import { ScrollView, SafeAreaView } from "react-native";
 import styled from "styled-components";
+import Card from "./components/Card";
 
 export default function App() {
   return (
     <Container>
-      <TitleBar>
-        <Avatar source={require("./assets/avatar.jpg")} />
-        <Title>Welcome back,</Title>
-        <Name>Meng</Name>
-      </TitleBar>
+      <SafeAreaView>
+        <ScrollView>
+          <TitleBar>
+            <Avatar source={require("./assets/avatar.jpg")} />
+            <Title>Welcome back,</Title>
+            <Name>Valeria </Name>
+          </TitleBar>
+          <Subtitle>Continue learning</Subtitle>
+          <ScrollView
+            horizontal={true}
+            style={{ paddingBottom: 50 }}
+            showsHorizontalScrollIndicator={false}
+          >
+            <Card
+              title="Styled Components"
+              image={require("./assets/background2.jpg")}
+              logo={require("./assets/logo-react.png")}
+              caption="React Native"
+              subtitle="5 out of 12 sections"
+            />
+            <Card
+              title="Styled Components 2"
+              image={require("./assets/background2.jpg")}
+              logo={require("./assets/logo-react.png")}
+              caption="React Native"
+              subtitle="5 out of 12 sections"
+            />
+            <Card
+              title="Styled Components 3"
+              image={require("./assets/background2.jpg")}
+              logo={require("./assets/logo-react.png")}
+              caption="React Native"
+              subtitle="5 out of 12 sections"
+            />
+          </ScrollView>
+        </ScrollView>
+      </SafeAreaView>
     </Container>
   );
 }
+
+const Subtitle = styled.Text`
+  color: #b8bece;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 15px;
+  margin-left: 20px;
+  margin-top: 50px;
+`;
 
 const Container = styled.View`
   flex: 1;
