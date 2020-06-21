@@ -35,7 +35,7 @@ const Name = styled.Text`
 const TitleBar = styled.View`
   width: 100%;
   margin-top: 50px;
-  padding-left: 20px;
+  padding-left: 80px;
 `;
 
 const Avatar = styled.Image`
@@ -45,6 +45,6 @@ const Avatar = styled.Image`
   border-radius: 22px;
   margin-left: 20px;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
 `;
