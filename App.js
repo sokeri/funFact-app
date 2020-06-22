@@ -2,24 +2,49 @@ import React from "react";
 import { ScrollView, SafeAreaView } from "react-native";
 import styled from "styled-components";
 import Card from "./components/Card";
-import { Ionicons } from "@expo/vector-icons";
+import { NotificationIcon } from "./components/Icons";
+import { Logo } from "./components/Logo";
 
 export default function App() {
   return (
     <Container>
       <SafeAreaView>
-        <ScrollView>
+        <ScrollView style={{ height: "100%" }}>
           <TitleBar>
             <Avatar source={require("./assets/avatar.jpg")} />
             <Title>Welcome back,</Title>
             <Name>Valeria </Name>
-            <Ionicons
-              name="ios-notifications"
-              size={32}
-              color="#4775f2"
-              style={{ position: "absolute", right: 20, top: 5 }}
-            ></Ionicons>
+            <NotificationIcon
+              style={{
+                position: "absolute",
+                right: 20,
+                top: 5,
+              }}
+            ></NotificationIcon>
           </TitleBar>
+          <ScrollView
+            horizontal={true}
+            style={{
+              padding: 20,
+              paddingLeft: 12,
+              paddingTop: 30,
+              flexDirection: "row",
+            }}
+            showsHorizontalScrollIndicator={false}
+          >
+            <Logo
+              logo={require("./assets/logo-framerx.png")}
+              title="Framer-X"
+            ></Logo>
+            <Logo
+              logo={require("./assets/logo-figma.png")}
+              title="Figma"
+            ></Logo>
+            <Logo
+              logo={require("./assets/logo-invision.png")}
+              title="Invision"
+            ></Logo>
+          </ScrollView>
           <Subtitle>Continue learning</Subtitle>
           <ScrollView
             horizontal={true}
@@ -60,7 +85,7 @@ const Subtitle = styled.Text`
   text-transform: uppercase;
   font-size: 15px;
   margin-left: 20px;
-  margin-top: 50px;
+  margin-top: 20px;
 `;
 
 const Container = styled.View`
