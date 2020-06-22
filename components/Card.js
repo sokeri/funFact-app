@@ -29,19 +29,36 @@ const Container = styled.View`
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 `;
 
-const Content = styled.View`
-  padding-left: 20px;
-  flex-direction: row;
-  align-items: center;
-  height: 80px;
-`;
-
 const Cover = styled.View`
   width: 100%;
   height: 200px;
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
   overflow: hidden;
+`;
+
+const Image = styled.Image`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
+
+const Title = styled.Text`
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 170px;
+`;
+
+const Content = styled.View`
+  padding-left: 20px;
+  flex-direction: row;
+  align-items: center;
+  height: 80px;
 `;
 
 const Wrapper = styled.View`
@@ -66,21 +83,4 @@ const Subtitle = styled.Text`
   font-weight: 600;
   text-transform: uppercase;
   margin-top: 4px;
-`;
-
-const Image = styled.Image`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-`;
-
-const Title = styled.Text`
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  margin-top: 20px;
-  margin-left: 20px;
-  width: 170px;
 `;

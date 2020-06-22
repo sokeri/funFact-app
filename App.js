@@ -1,83 +1,87 @@
 import React from "react";
-import { ScrollView, SafeAreaView } from "react-native";
-import styled from "styled-components";
+import { ScrollView, SafeAreaView, View, StatusBar } from "react-native";
+import styled, { withTheme } from "styled-components";
 import Card from "./components/Card";
 import { NotificationIcon } from "./components/Icons";
 import { Logo } from "./components/Logo";
+import { Course } from "./components/Course";
 
 export default function App() {
   return (
-    <Container>
-      <SafeAreaView>
-        <ScrollView style={{ height: "100%" }}>
-          <TitleBar>
-            <Avatar source={require("./assets/avatar.jpg")} />
-            <Title>Welcome back,</Title>
-            <Name>Valeria </Name>
-            <NotificationIcon
+    <SafeAreaView backgroundColor="rgba(255,255,255,0)">
+      <StatusBar barStyle="dark-content" />
+      <ScrollView>
+        <View style={{ flex: 1 }}>
+          <Container>
+            <TitleBar>
+              <Avatar source={require("./assets/avatar.jpg")} />
+              <Title>Welcome back,</Title>
+              <Name>Valeria </Name>
+              <NotificationIcon
+                style={{
+                  position: "absolute",
+                  right: 20,
+                  top: 5,
+                }}
+              ></NotificationIcon>
+            </TitleBar>
+            <ScrollView
+              horizontal={true}
               style={{
-                position: "absolute",
-                right: 20,
-                top: 5,
+                padding: 20,
+                paddingLeft: 12,
+                paddingTop: 30,
+                flexDirection: "row",
               }}
-            ></NotificationIcon>
-          </TitleBar>
-          <ScrollView
-            horizontal={true}
-            style={{
-              padding: 20,
-              paddingLeft: 12,
-              paddingTop: 30,
-              flexDirection: "row",
-            }}
-            showsHorizontalScrollIndicator={false}
-          >
-            <Logo
-              logo={require("./assets/logo-framerx.png")}
-              title="Framer-X"
-            ></Logo>
-            <Logo
-              logo={require("./assets/logo-figma.png")}
-              title="Figma"
-            ></Logo>
-            <Logo
-              logo={require("./assets/logo-invision.png")}
-              title="Invision"
-            ></Logo>
-          </ScrollView>
-          <Subtitle>Continue learning</Subtitle>
-          <ScrollView
-            horizontal={true}
-            style={{ paddingBottom: 50 }}
-            showsHorizontalScrollIndicator={false}
-          >
-            <Card
-              title="Styled Components"
-              image={require("./assets/background2.jpg")}
-              logo={require("./assets/logo-react.png")}
-              caption="React Native"
-              subtitle="5 out of 12 sections"
-            />
-            <Card
-              title="Styled Components 2"
-              image={require("./assets/background2.jpg")}
-              logo={require("./assets/logo-react.png")}
-              caption="React Native"
-              subtitle="5 out of 12 sections"
-            />
-            <Card
-              title="Styled Components 3"
-              image={require("./assets/background2.jpg")}
-              logo={require("./assets/logo-react.png")}
-              caption="React Native"
-              subtitle="5 out of 12 sections"
-            />
-          </ScrollView>
-        </ScrollView>
-      </SafeAreaView>
-    </Container>
+              showsHorizontalScrollIndicator={false}
+            >
+              {logos.map((logo, index) => (
+                <Logo key={index} logo={logo.image} title={logo.text} />
+              ))}
+            </ScrollView>
+            <Subtitle>Continue learning</Subtitle>
+            <ScrollView
+              horizontal={true}
+              style={{ paddingBottom: 50 }}
+              showsHorizontalScrollIndicator={false}
+            >
+              {cards.map((card, index) => (
+                <Card
+                  key={index}
+                  title={card.title}
+                  image={card.image}
+                  logo={card.logo}
+                  caption={card.caption}
+                  subtitle={card.subtitle}
+                />
+              ))}
+            </ScrollView>
+            <Subtitle>Popular this week</Subtitle>
+            <ScrollView
+              horizontal={true}
+              style={{ paddingBottom: 50 }}
+              showsHorizontalScrollIndicator={false}
+            >
+              {courses.map((course, index) => (
+                <Course
+                  key={index}
+                  image={course.image}
+                  avatar={course.avatar}
+                  title={course.title}
+                  description={course.description}
+                />
+              ))}
+            </ScrollView>
+          </Container>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
+
+const Container = styled.View`
+  background-color: #f0f3f5;
+`;
 
 const Subtitle = styled.Text`
   color: #b8bece;
@@ -85,13 +89,7 @@ const Subtitle = styled.Text`
   text-transform: uppercase;
   font-size: 15px;
   margin-left: 20px;
-  margin-top: 20px;
-`;
-
-const Container = styled.View`
-  flex: 1;
-  background: #ffffff;
-  position: absolute;
+  margin-top: 12px;
 `;
 
 const Title = styled.Text`
@@ -122,3 +120,76 @@ const Avatar = styled.Image`
   top: 0px;
   left: 0px;
 `;
+
+const logos = [
+  {
+    image: require("./assets/logo-framerx.png"),
+    text: "Framer X",
+  },
+  {
+    image: require("./assets/logo-figma.png"),
+    text: "Figma",
+  },
+  {
+    image: require("./assets/logo-invision.png"),
+    text: "Invision",
+  },
+  {
+    image: require("./assets/logo-react.png"),
+    text: "React",
+  },
+  {
+    image: require("./assets/logo-sketch.png"),
+    text: "Sketch",
+  },
+  {
+    image: require("./assets/logo-swift.png"),
+    text: "Swift",
+  },
+];
+
+const cards = [
+  {
+    title: "Styled Components",
+    image: require("./assets/background2.jpg"),
+    logo: require("./assets/logo-react.png"),
+    caption: "React Native",
+    subtitle: "5 out of 12 sections",
+  },
+  {
+    title: "React Native for Designers",
+    image: require("./assets/background11.jpg"),
+    subtitle: "React Native",
+    caption: "1 of 12 sections",
+    logo: require("./assets/logo-react.png"),
+  },
+  {
+    title: "Props and Icons",
+    image: require("./assets/background13.jpg"),
+    subtitle: "React Native",
+    caption: "3 of 12 sections",
+    logo: require("./assets/logo-react.png"),
+  },
+  {
+    title: "Static Data and Loop",
+    image: require("./assets/background14.jpg"),
+    subtitle: "React Native",
+    caption: "4 of 12 sections",
+    logo: require("./assets/logo-react.png"),
+  },
+];
+
+const courses = [
+  {
+    title: "Top 3 courses",
+    image: require("./assets/background1.jpg"),
+    avatar: require("./assets/avatar-default.jpg"),
+    description: "Your kickstart for learning.",
+  },
+  {
+    title: "Tips and tricks",
+    image: require("./assets/background6.jpg"),
+    avatar: require("./assets/avatar-default.jpg"),
+    description: "Get familiar with the hidden shortcuts.",
+  },
+];
