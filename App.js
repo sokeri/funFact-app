@@ -1,102 +1,100 @@
 import React from "react";
-import { ScrollView, SafeAreaView, View, StatusBar } from "react-native";
+import { SafeAreaView, ScrollView, View, StatusBar } from "react-native";
 import styled, { withTheme } from "styled-components";
 import Card from "./components/Card";
 import Course from "./components/Course";
-
 import { NotificationIcon } from "./components/Icons";
 import { Logo } from "./components/Logo";
 import { Idea } from "./components/Idea";
+import Menu from "./components/Menu";
 
 export default function App() {
   return (
-    <SafeAreaView backgroundColor="rgba(255,255,255,0)">
-      <StatusBar barStyle="dark-content" />
-      <ScrollView>
-        <View style={{ flex: 1 }}>
-          <Container>
-            <TitleBar>
-              <Avatar source={require("./assets/avatar.jpg")} />
-              <Title>Welcome back,</Title>
-              <Name>Valeria </Name>
-              <NotificationIcon
-                style={{
-                  position: "absolute",
-                  right: 20,
-                  top: 5,
-                }}
-              ></NotificationIcon>
-            </TitleBar>
-            <ScrollView
-              horizontal={true}
+    <Container>
+      <Menu></Menu>
+      <SafeAreaView>
+        <ScrollView>
+          <TitleBar>
+            <Avatar source={require("./assets/avatar.jpg")} />
+            <Title>Welcome back,</Title>
+            <Name>Valeria </Name>
+            <NotificationIcon
               style={{
-                padding: 20,
-                paddingLeft: 12,
-                paddingTop: 30,
-                flexDirection: "row",
+                position: "absolute",
+                right: 20,
+                top: 5,
               }}
-              showsHorizontalScrollIndicator={false}
-            >
-              {logos.map((logo, index) => (
-                <Logo key={index} logo={logo.image} title={logo.text} />
-              ))}
-            </ScrollView>
-            <Subtitle>Continue learning</Subtitle>
-            <ScrollView
-              horizontal={true}
-              style={{ paddingBottom: 50 }}
-              showsHorizontalScrollIndicator={false}
-            >
-              {cards.map((card, index) => (
-                <Card
-                  key={index}
-                  title={card.title}
-                  image={card.image}
-                  logo={card.logo}
-                  caption={card.caption}
-                  subtitle={card.subtitle}
-                />
-              ))}
-            </ScrollView>
-            <Subtitle>Popular this week</Subtitle>
-            <ScrollView
-              horizontal={true}
-              style={{ paddingBottom: 50 }}
-              showsHorizontalScrollIndicator={false}
-            >
-              {ideas.map((idea, index) => (
-                <Idea
-                  key={index}
-                  image={idea.image}
-                  avatar={idea.avatar}
-                  title={idea.title}
-                  description={idea.description}
-                />
-              ))}
-            </ScrollView>
-            <Subtitle>Courses</Subtitle>
-            <ScrollView
-              horizontal={true}
-              style={{ paddingBottom: 50 }}
-              showsHorizontalScrollIndicator={false}
-            >
-              {courses.map((course, index) => (
-                <Course
-                  key={index}
-                  image={course.image}
-                  logo={course.logo}
-                  subtitle={course.subtitle}
-                  title={course.title}
-                  avatar={course.avatar}
-                  caption={course.caption}
-                  details={course.details}
-                />
-              ))}
-            </ScrollView>
-          </Container>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+            ></NotificationIcon>
+          </TitleBar>
+          <ScrollView
+            horizontal={true}
+            style={{
+              padding: 20,
+              paddingLeft: 12,
+              paddingTop: 30,
+              flexDirection: "row",
+            }}
+            showsHorizontalScrollIndicator={false}
+          >
+            {logos.map((logo, index) => (
+              <Logo key={index} logo={logo.image} title={logo.text} />
+            ))}
+          </ScrollView>
+          <Subtitle>Continue learning</Subtitle>
+          <ScrollView
+            horizontal={true}
+            style={{ paddingBottom: 50 }}
+            showsHorizontalScrollIndicator={false}
+          >
+            {cards.map((card, index) => (
+              <Card
+                key={index}
+                title={card.title}
+                image={card.image}
+                logo={card.logo}
+                caption={card.caption}
+                subtitle={card.subtitle}
+              />
+            ))}
+          </ScrollView>
+          <Subtitle>Popular this week</Subtitle>
+          <ScrollView
+            horizontal={true}
+            style={{ paddingBottom: 50 }}
+            showsHorizontalScrollIndicator={false}
+          >
+            {ideas.map((idea, index) => (
+              <Idea
+                key={index}
+                image={idea.image}
+                avatar={idea.avatar}
+                title={idea.title}
+                description={idea.description}
+              />
+            ))}
+          </ScrollView>
+          <Subtitle>Courses</Subtitle>
+          <ScrollView
+            horizontal={true}
+            style={{ paddingBottom: 50 }}
+            showsHorizontalScrollIndicator={false}
+          >
+            {courses.map((course, index) => (
+              <Course
+                key={index}
+                image={course.image}
+                logo={course.logo}
+                subtitle={course.subtitle}
+                title={course.title}
+                avatar={course.avatar}
+                caption={course.caption}
+                details={course.details}
+              />
+            ))}
+          </ScrollView>
+        </ScrollView>
+      </SafeAreaView>
+    </Container>
   );
 }
 
