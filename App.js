@@ -2,9 +2,11 @@ import React from "react";
 import { ScrollView, SafeAreaView, View, StatusBar } from "react-native";
 import styled, { withTheme } from "styled-components";
 import Card from "./components/Card";
+import Course from "./components/Course";
+
 import { NotificationIcon } from "./components/Icons";
 import { Logo } from "./components/Logo";
-import { Course } from "./components/Course";
+import { Idea } from "./components/Idea";
 
 export default function App() {
   return (
@@ -62,13 +64,32 @@ export default function App() {
               style={{ paddingBottom: 50 }}
               showsHorizontalScrollIndicator={false}
             >
+              {ideas.map((idea, index) => (
+                <Idea
+                  key={index}
+                  image={idea.image}
+                  avatar={idea.avatar}
+                  title={idea.title}
+                  description={idea.description}
+                />
+              ))}
+            </ScrollView>
+            <Subtitle>Courses</Subtitle>
+            <ScrollView
+              horizontal={true}
+              style={{ paddingBottom: 50 }}
+              showsHorizontalScrollIndicator={false}
+            >
               {courses.map((course, index) => (
                 <Course
                   key={index}
                   image={course.image}
-                  avatar={course.avatar}
+                  logo={course.logo}
+                  subtitle={course.subtitle}
                   title={course.title}
-                  description={course.description}
+                  avatar={course.avatar}
+                  caption={course.caption}
+                  details={course.details}
                 />
               ))}
             </ScrollView>
@@ -179,9 +200,9 @@ const cards = [
   },
 ];
 
-const courses = [
+const ideas = [
   {
-    title: "Top 3 courses",
+    title: "Top 3 tricks",
     image: require("./assets/background1.jpg"),
     avatar: require("./assets/avatar-default.jpg"),
     description: "Your kickstart for learning.",
@@ -191,5 +212,26 @@ const courses = [
     image: require("./assets/background6.jpg"),
     avatar: require("./assets/avatar-default.jpg"),
     description: "Get familiar with the hidden shortcuts.",
+  },
+];
+
+const courses = [
+  {
+    image: require("./assets/background3.jpg"),
+    logo: require("./assets/logo-studio.png"),
+    subtitle: "1 of 4 sections",
+    title: "Prototype with InVision",
+    avatar: require("./assets/avatar-default.jpg"),
+    caption: "Learn to design and code a React site",
+    details: "Valeria",
+  },
+  {
+    image: require("./assets/background9.jpg"),
+    logo: require("./assets/logo-figma.png"),
+    subtitle: "1 of 4 sections",
+    title: "Prototype with Figma",
+    avatar: require("./assets/avatar-default.jpg"),
+    caption: "Built a Figma mobile app from scratch - in two days",
+    details: "Mark",
   },
 ];

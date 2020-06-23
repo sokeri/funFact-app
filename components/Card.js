@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Card = (props) => (
+const Course = (props) => (
   <Container>
     <Cover>
       <Image source={props.image} />
@@ -17,7 +17,7 @@ const Card = (props) => (
   </Container>
 );
 
-export default Card;
+export default Course;
 
 const Container = styled.View`
   background: white;
@@ -38,11 +38,11 @@ const Cover = styled.View`
 `;
 
 const Image = styled.Image`
-  width: 100%;
-  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
 `;
 
 const Title = styled.Text`

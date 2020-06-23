@@ -9,13 +9,6 @@ export const Logo = (props) => (
 );
 
 const Container = styled.View`
-  /*  background: white;
-  max-width: 148px;
-  height: 60px;
-  border-radius: 14px;
-  margin-left: 20px;
-  margin-top: 20px; */
-
   flex-direction: row;
   height: 60px;
   padding: 12px 16px 12px;
