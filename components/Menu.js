@@ -3,6 +3,20 @@ import styled from "styled-components";
 import { Animated, TouchableOpacity, Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import MenuItem from "./MenuItem";
+import { connect } from "react-redux";
+
+function mapStateToProps(state) {
+  return { action: state.action }; // "action" is just a name for this prop
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    closeMenu: () =>
+      dispatch({
+        type: "CLOSE_MENU",
+      }),
+  };
+}
 
 const screenHeight = Dimensions.get("window").height;
 
@@ -12,15 +26,27 @@ class Menu extends React.Component {
   };
 
   componentDidMount() {
-    Animated.spring(this.state.top, {
-      toValue: 0,
-    }).start();
+    this.toggleMenu();
+  }
+
+  componentDidUpdate() {
+    this.toggleMenu();
   }
 
   toggleMenu = () => {
-    Animated.spring(this.state.top, {
-      toValue: screenHeight,
-    }).start();
+    if (this.props.action == "openMenu") {
+      // then close
+      Animated.spring(this.state.top, {
+        toValue: 100,
+      }).start();
+    }
+
+    if (this.props.action == "closeMenu") {
+      // then open
+      Animated.spring(this.state.top, {
+        toValue: screenHeight,
+      }).start();
+    }
   };
 
   render() {
@@ -32,7 +58,7 @@ class Menu extends React.Component {
           <Subtitle>Designer</Subtitle>
         </Cover>
         <TouchableOpacity
-          onPress={this.toggleMenu}
+          onPress={this.props.closeMenu}
           style={{
             positon: "absolute",
             top: -20,
@@ -60,7 +86,18 @@ class Menu extends React.Component {
   }
 }
 
-export default Menu;
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
+
+const Container = styled.View`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  border-radius: 10px;
+  overflow: hidden;
+`;
+
+const AnimatedContainer = Animated.createAnimatedComponent(Container);
 
 const CloseView = styled.View`
   width: 44px;
@@ -71,16 +108,6 @@ const CloseView = styled.View`
   justify-content: center;
   align-items: center;
 `;
-
-const Container = styled.View`
-  position: absolute;
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-`;
-
-const AnimatedContainer = Animated.createAnimatedComponent(Container);
 
 const Cover = styled.View`
   height: 142px;
