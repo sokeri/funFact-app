@@ -20,17 +20,16 @@ function mapDispatchToProps(dispatch) {
 
 class Avatar extends React.Component {
   state = {
-    photo: "https://api.adorable.io/avatars/285/abott@adorable.png",
+    photo: "https://cl.ly/55da82beb939/download/avatar-default.jpg",
+    name: "John Doe",
   };
 
   componentDidMount() {
     fetch("https://uifaces.co/api?limit=1&random", {
       headers: new Headers({
-        "X-API-KEY": "bf0f0a307f6d22467b1525cf6a8afe",
+        "X-API-KEY": "eeaafbe81657073cd70ac6e3de1bd6",
       }),
-    });
-
-    fetch("https://picsum.photos/seed/picsum/200/300")
+    })
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
@@ -42,6 +41,7 @@ class Avatar extends React.Component {
         this.props.updateName(response[0].name);
       });
   }
+
   render() {
     return <Image source={{ uri: this.state.photo }} />;
   }

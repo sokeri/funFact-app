@@ -6,7 +6,7 @@ import MenuItem from "./MenuItem";
 import { connect } from "react-redux";
 
 function mapStateToProps(state) {
-  return { action: state.action }; // "action" is just a name for this prop
+  return { action: state.action, name: state.name, position: state.position };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -38,6 +38,7 @@ class Menu extends React.Component {
       // then close
       Animated.spring(this.state.top, {
         toValue: 100,
+        useNativeDriver: false,
       }).start();
     }
 
@@ -45,6 +46,7 @@ class Menu extends React.Component {
       // then open
       Animated.spring(this.state.top, {
         toValue: screenHeight,
+        useNativeDriver: false,
       }).start();
     }
   };
@@ -54,8 +56,8 @@ class Menu extends React.Component {
       <AnimatedContainer style={{ top: this.state.top }}>
         <Cover>
           <Image source={require("../assets/background2.jpg")} />
-          <Title>Valeria</Title>
-          <Subtitle>Designer</Subtitle>
+          <Name>Your name</Name>
+          <Bio>{this.props.position}</Bio>
         </Cover>
         <TouchableOpacity
           onPress={this.props.closeMenu}
@@ -121,13 +123,13 @@ const Image = styled.Image`
   position: absolute;
 `;
 
-const Title = styled.Text`
+const Name = styled.Text`
   font-size: 20px;
   font-weight: 600;
   color: white;
 `;
 
-const Subtitle = styled.Text`
+const Bio = styled.Text`
   font-size: 12px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.6);

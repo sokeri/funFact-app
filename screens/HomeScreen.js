@@ -44,9 +44,11 @@ class HomeScreen extends React.Component {
         toValue: 0.9,
         duration: 300,
         easing: Easing.in(),
+        useNativeDriver: false,
       }).start();
       Animated.spring(this.state.opacity, {
         toValue: 0.5,
+        useNativeDriver: false,
       }).start();
 
       StatusBar.setBarStyle("light-content", true);
@@ -56,9 +58,11 @@ class HomeScreen extends React.Component {
         toValue: 1,
         duration: 300,
         easing: Easing.in(),
+        useNativeDriver: false,
       }).start();
       Animated.spring(this.state.opacity, {
         toValue: 1,
+        useNativeDriver: false,
       }).start();
 
       StatusBar.setBarStyle("dark-content", true);

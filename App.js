@@ -6,6 +6,7 @@ import HomeScreen from "./screens/HomeScreen";
 const initialState = {
   action: "",
   name: "",
+  position: "",
 };
 
 const reducer = (state = initialState, action) => {
@@ -15,7 +16,9 @@ const reducer = (state = initialState, action) => {
     case "CLOSE_MENU":
       return { action: "closeMenu" };
     case "UPDATE_NAME":
-      return { action: "updateName" };
+      return { name: action.name };
+    case "UPDATE_POSITION":
+      return { position: action.postion };
     default:
       return state;
   }
