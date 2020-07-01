@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  SafeAreaView,
   ScrollView,
   TouchableOpacity,
   Animated,
@@ -8,6 +7,7 @@ import {
   StatusBar,
 } from "react-native";
 import styled from "styled-components";
+import SafeAreaView from "react-native-safe-area-view";
 import Card from "../components/Card";
 import Course from "../components/Course";
 import { NotificationIcon } from "../components/Icons";
@@ -26,6 +26,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 class HomeScreen extends React.Component {
+  static navigationOptions = {
+    headerShown: false,
+  };
+
   state = {
     scale: new Animated.Value(1),
     opacity: new Animated.Value(1),
@@ -119,14 +123,20 @@ class HomeScreen extends React.Component {
                 showsHorizontalScrollIndicator={false}
               >
                 {cards.map((card, index) => (
-                  <Card
+                  <TouchableOpacity
                     key={index}
-                    title={card.title}
-                    image={card.image}
-                    logo={card.logo}
-                    caption={card.caption}
-                    subtitle={card.subtitle}
-                  />
+                    onPress={() => {
+                      this.props.navigation.push("Section");
+                    }}
+                  >
+                    <Card
+                      title={card.title}
+                      image={card.image}
+                      logo={card.logo}
+                      caption={card.caption}
+                      subtitle={card.subtitle}
+                    />
+                  </TouchableOpacity>
                 ))}
               </ScrollView>
               <Subtitle>Popular this week</Subtitle>
