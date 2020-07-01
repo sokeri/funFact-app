@@ -26,6 +26,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 class HomeScreen extends React.Component {
+  static navigationOptions = {
+    headerShown: false,
+  };
+
   state = {
     scale: new Animated.Value(1),
     opacity: new Animated.Value(1),
