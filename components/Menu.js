@@ -6,7 +6,7 @@ import MenuItem from "./MenuItem";
 import { connect } from "react-redux";
 
 function mapStateToProps(state) {
-  return { action: state.action, name: state.name, position: state.position };
+  return { action: state.action, name: state.name };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -56,8 +56,8 @@ class Menu extends React.Component {
       <AnimatedContainer style={{ top: this.state.top }}>
         <Cover>
           <Image source={require("../assets/background2.jpg")} />
-          <Name>Your name</Name>
-          <Bio>{this.props.position}</Bio>
+          <Name>Valeria</Name>
+          <Bio>Designer</Bio>
         </Cover>
         <TouchableOpacity
           onPress={this.props.closeMenu}

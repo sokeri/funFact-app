@@ -6,7 +6,6 @@ import HomeScreen from "./screens/HomeScreen";
 const initialState = {
   action: "",
   name: "",
-  position: "",
 };
 
 const reducer = (state = initialState, action) => {
