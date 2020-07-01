@@ -16,8 +16,6 @@ const reducer = (state = initialState, action) => {
       return { action: "closeMenu" };
     case "UPDATE_NAME":
       return { name: action.name };
-    case "UPDATE_POSITION":
-      return { position: action.postion };
     default:
       return state;
   }
