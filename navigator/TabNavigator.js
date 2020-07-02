@@ -23,6 +23,7 @@ HomeStack.navigationOptions = ({ navigation }) => {
   const routeName = navigation.state.routes[navigation.state.index].routeName;
 
   if (routeName == "Section") {
+    /*When opening a card from Home, don't show navigation*/
     tabBarVisible = false;
   }
 

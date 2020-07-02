@@ -191,7 +191,8 @@ const RootView = styled.View`
 
 const Container = styled.View`
   background-color: #f0f3f5;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   overflow: hidden;
 `;
 
