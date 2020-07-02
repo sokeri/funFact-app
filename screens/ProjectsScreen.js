@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "react-native";
 
-class SectionScreen extends React.Component {
+class ProjectsScreen extends React.Component {
   static navigationOptions = {
     headerShown: false,
   };
@@ -10,19 +9,13 @@ class SectionScreen extends React.Component {
   render() {
     return (
       <Container>
-        <Text>Section screen</Text>
-        <Button
-          title="close"
-          onPress={() => {
-            this.props.navigation.goBack();
-          }}
-        />
+        <Text>Projects</Text>
       </Container>
     );
   }
 }
 
-export default SectionScreen;
+export default ProjectsScreen;
 
 const Container = styled.View`
   flex: 1;
