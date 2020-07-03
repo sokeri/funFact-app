@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { TouchableOpacity, StatusBar } from "react-native";
+import { TouchableOpacity, StatusBar, Linking } from "react-native";
+import { WebView } from "react-native-webview";
 import { Ionicons } from "@expo/vector-icons";
 
 class SectionScreen extends React.Component {
@@ -46,6 +47,22 @@ class SectionScreen extends React.Component {
             <Ionicons name="ios-close" size={46} color="#546bfb" />
           </CloseView>
         </TouchableOpacity>
+        <Content>
+          <WebView
+            ref="webview"
+            source={{ html: htmlContent + htmlStyles }}
+            scalesPageToFit={true}
+            scrollEnable={false}
+            onNavigationStateChange={(event) => {
+              console.log(event);
+
+              if (event.url != "about:blank") {
+                this.refs.webview.stopLoading();
+                Linking.openURL(event.url);
+              }
+            }}
+          ></WebView>
+        </Content>
       </Container>
     );
   }
@@ -53,12 +70,41 @@ class SectionScreen extends React.Component {
 
 export default SectionScreen;
 
+const htmlContent = `
+<h2> This is a title </h2>
+<p> This <strong>is</strong> <a href="http://google.com">a link </a></p>
+<img src="https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png">
+`;
+
+const htmlStyles = `
+<style>
+* { 
+  font-family: -apple-system, Roboto; 
+  margin: 0;
+  margin: 0;
+}
+
+img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+
+</style>
+`;
+
 const Container = styled.View`
   flex: 1;
 `;
 
 const Cover = styled.View`
   height: 375px;
+`;
+
+const Content = styled.View`
+  height: 100%;
+  padding: 20px;
 `;
 
 const CloseView = styled.View`
