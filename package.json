@@ -9,8 +9,11 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.10",
+    "apollo-boost": "^0.4.9",
     "expo": "^38.0.8",
+    "graphql": "^15.2.0",
     "react": "16.11.0",
+    "react-apollo": "^3.1.5",
     "react-dom": "16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.0.tar.gz",
     "react-native-gesture-handler": "^1.6.1",
