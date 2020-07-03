@@ -1,4 +1,5 @@
-# An iOS app based on the tutorial
+# An iOS React native mobile app 
+> based on the tutorial
 https://designcode.io/react-native-for-designers
 
 ____________
