@@ -150,10 +150,22 @@ _______________
 - Within a new container, add a data loop with {data.cardsCollection.items.map((card, index) => ( … ))}, to apply Contentful data to the card
 - Specify error and loading -messages
 
-## HTML WebView and Markdown
+## 9. HTML WebView and Markdown
 - Install web-view library from npm install --save react-native-webview
 - Remove scrolling
 - Create CSS styles for WebView’s html content
 - Render basic text, image and links within a web view
 - Open links in a browser onNavigationStateChange with Linking -component
 - Switch WebView to markdown with npm install --save react-native-showdown
+
+## 10. Improve for iPad and Android 
+
+- Make Android emulator run with expo start --android
+- Fix Android box-shadow with component `style={{  elevation: … }}`
+- Fix missing uppercase with component `style={{ props.X.toUpperCase() }}`
+- Fix Android status bar color with  “Platform” from “React” and 
+`_if (Platform.OS == "android") StatusBar.setBarStyle("light-content", true);_`
+- Style cards with imported “Dimensions” library and 
+`const screenWidth = Dimensions.get("window").width;`
+- Create a grid with and if-statement on `const screenWidth`
+- Make a “responsive” card width with a new function that looks into current state (user changes from/to Portrait or Landscape) and listens to changes in the window dimensions
