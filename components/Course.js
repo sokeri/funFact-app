@@ -1,21 +1,59 @@
 import React from "react";
 import styled from "styled-components";
+import { Dimensions } from "react-native";
+import { render } from "react-dom";
 
-const Course = (props) => (
-  <Container style={{ elevation: 12 }}>
-    <Cover>
-      <Image source={props.image} />
-      <Logo source={props.logo} resizeMode="contain" />
-      <Subtitle>{props.subtitle.toUpperCase()}</Subtitle>
-      <Title>{props.title}</Title>
-    </Cover>
-    <Content>
-      <Avatar source={props.avatar} />
-      <Caption>{props.caption}</Caption>
-      <Details>Taught by {props.details}</Details>
-    </Content>
-  </Container>
-);
+const screenWidth = Dimensions.get("window").width;
+
+function getCourseWidth(screenWidth) {
+  var cardWidth = screenWidth - 40;
+  if (screenWidth >= 768) {
+    cardWidth = (screenWidth - 60) / 2;
+  }
+  if (screenWidth >= 1024) {
+    cardWidth = (screenWidth - 80) / 3;
+  }
+  return cardWidth;
+}
+
+class Course extends React.Component {
+  state = {
+    cardWidth: getCourseWidth(screenWidth),
+  };
+
+  componentDidMount() {
+    Dimensions.addEventListener("change", this.adaptLayout);
+  }
+
+  adaptLayout = (dimensions) => {
+    this.setState({
+      cardWidth: getCourseWidth(dimensions.window.width),
+    });
+  };
+
+  render() {
+    return (
+      <Container
+        style={{
+          elevation: 12,
+          width: this.state.cardWidth,
+        }}
+      >
+        <Cover>
+          <Image source={this.props.image} />
+          <Logo source={this.props.logo} resizeMode="contain" />
+          <Subtitle>{this.props.subtitle.toUpperCase()}</Subtitle>
+          <Title>{this.props.title}</Title>
+        </Cover>
+        <Content>
+          <Avatar source={this.props.avatar} />
+          <Caption>{this.props.caption}</Caption>
+          <Details>Taught by {this.props.details}</Details>
+        </Content>
+      </Container>
+    );
+  }
+}
 
 export default Course;
 
@@ -24,7 +62,7 @@ const Container = styled.View`
   width: 315px;
   height: 335px;
   border-radius: 14px;
-  margin: 20px;
+  margin: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 `;
 

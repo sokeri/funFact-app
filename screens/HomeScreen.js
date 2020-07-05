@@ -210,11 +210,8 @@ class HomeScreen extends React.Component {
                 ))}
               </ScrollView>
               <Subtitle>Your courses</Subtitle>
-              <ScrollView
-                horizontal={true}
-                style={{ paddingBottom: 50 }}
-                showsHorizontalScrollIndicator={false}
-              >
+
+              <CourseContainer>
                 {courses.map((course, index) => (
                   <Course
                     key={index}
@@ -227,7 +224,7 @@ class HomeScreen extends React.Component {
                     details={course.details}
                   />
                 ))}
-              </ScrollView>
+              </CourseContainer>
             </ScrollView>
           </SafeAreaView>
         </AnimatedContainer>
@@ -257,6 +254,12 @@ const Container = styled.View`
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   overflow: hidden;
+`;
+
+const CourseContainer = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 10px;
 `;
 
 const AnimatedContainer = Animated.createAnimatedComponent(Container);
@@ -383,7 +386,25 @@ const courses = [
     subtitle: "1 of 4 sections",
     title: "Prototype with Figma",
     avatar: require("../assets/avatar-default.jpg"),
-    caption: "Built a Figma mobile app from scratch - in two days",
+    caption: "Build a Figma mobile app from scratch - in two days",
     details: "Mark",
+  },
+  {
+    image: require("../assets/background11.jpg"),
+    logo: require("../assets/logo-xd.png"),
+    subtitle: "1 of 4 sections",
+    title: "Get started with XD",
+    avatar: require("../assets/avatar-default.jpg"),
+    caption: "Build beautiful UI with XD",
+    details: "Top",
+  },
+  {
+    image: require("../assets/background2.jpg"),
+    logo: require("../assets/logo-swift.png"),
+    subtitle: "1 of 4 sections",
+    title: "Swift basics",
+    avatar: require("../assets/avatar-default.jpg"),
+    caption: "Get  familiar with xCode",
+    details: "Top",
   },
 ];
