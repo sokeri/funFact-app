@@ -5,6 +5,7 @@ import {
   Animated,
   Easing,
   StatusBar,
+  Platform,
 } from "react-native";
 import styled from "styled-components";
 import SafeAreaView from "react-native-safe-area-view";
@@ -72,6 +73,8 @@ class HomeScreen extends React.Component {
 
   componentDidMount() {
     StatusBar.setBarStyle("dark-content", true);
+
+    if (Platform.OS == "android") StatusBar.setBarStyle("light-content", true);
   }
   componentDidUpdate() {
     this.toggleMenu();
@@ -206,7 +209,7 @@ class HomeScreen extends React.Component {
                   />
                 ))}
               </ScrollView>
-              <Subtitle>Courses</Subtitle>
+              <Subtitle>Your courses</Subtitle>
               <ScrollView
                 horizontal={true}
                 style={{ paddingBottom: 50 }}
@@ -355,6 +358,12 @@ const ideas = [
     image: require("../assets/background6.jpg"),
     avatar: require("../assets/avatar-default.jpg"),
     description: "Get familiar with the hidden shortcuts.",
+  },
+  {
+    title: "Best practices",
+    image: require("../assets/background10.jpg"),
+    avatar: require("../assets/avatar-default.jpg"),
+    description: "How to get started...",
   },
 ];
 

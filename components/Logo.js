@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 export const Logo = (props) => (
-  <Container>
+  <Container style={{ elevate: 12 }}>
     <Image source={props.logo} resizeMode="contain"></Image>
     <Text>{props.title}</Text>
   </Container>

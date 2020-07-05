@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const Course = (props) => (
-  <Container>
+  <Container style={{ elevation: 12 }}>
     <Cover>
       <Image source={props.image} />
       <Logo source={props.logo} resizeMode="contain" />
-      <Subtitle>{props.subtitle}</Subtitle>
+      <Subtitle>{props.subtitle.toUpperCase()}</Subtitle>
       <Title>{props.title}</Title>
     </Cover>
     <Content>
@@ -24,8 +24,7 @@ const Container = styled.View`
   width: 315px;
   height: 335px;
   border-radius: 14px;
-  margin-left: 20px;
-  margin-top: 20px;
+  margin: 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 `;
 
@@ -65,7 +64,7 @@ const Title = styled.Text`
   color: white;
   font-size: 22px;
   font-weight: 600;
-  width: 180px;
+  width: 170px;
   margin-left: 20px;
   margin-bottom: 20px;
 `;
@@ -89,6 +88,7 @@ const Caption = styled.Text`
   font-size: 12px;
   font-weight: 600;
   color: #3c4560;
+  padding-right: 30px;
 `;
 
 const Details = styled.Text`
