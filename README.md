@@ -4,6 +4,10 @@ https://designcode.io/react-native-for-designers
 
 ____________
 
+![Preview](https://github.com/sokeri/funFact-app/blob/master/appPreview.gif?raw=true)
+
+____________
+
 ## Installed via npm
 
 **Expo CLI**
